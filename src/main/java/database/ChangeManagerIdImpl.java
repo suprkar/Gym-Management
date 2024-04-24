@@ -1,7 +1,10 @@
+import java.sql.*;
+
+
 public class ManagerIdChangeService implements IdChangeService {
     @Override
     public boolean changeLoginId(String currentId, String password, String newId) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gym_management", "user", "password")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gym_management", "root", "pes2ug21cs556")) {
             // First, verify the current ID and password
             String verifySql = "SELECT * FROM managers WHERE login_id = ? AND password = ?";
             PreparedStatement verifyStmt = conn.prepareStatement(verifySql);
