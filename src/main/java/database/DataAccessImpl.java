@@ -22,4 +22,18 @@ public class DataAccessImpl implements DataAccess {
             return null;
         }
     }
+
+    @Override
+    public boolean updatePassword(String userId, String newPassword) {
+        String sql = "UPDATE users SET password = ? WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, newPassword);  // Directly using the new password without hashing
+            stmt.setString(2, userId);
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
