@@ -5,21 +5,46 @@ import javax.swing.table.DefaultTableModel;
 
 public class AdminPage extends JFrame {
     private DataAccess dataAccess;
+    private JTable dataTable;
+    private DefaultTableModel tableModel;
 
     public AdminPage(DataAccess dataAccess) {
         this.dataAccess = dataAccess;
         initComponents();
+        setupLayout();
     }
 
     private void initComponents() {
-        // GUI setup code, like setting background color, layout, etc.
-        getContentPane().setBackground(new Color(255, 204, 51));
-        updateTable();
+        dataTable = new JTable();
+        tableModel = new DefaultTableModel(new Object[]{"Column1", "Column2"}, 0);
+        dataTable.setModel(tableModel);
+        fetchData();
     }
 
-    private void updateTable() {
-        ResultSet rs = dataAccess.fetchData();
-        DefaultTableModel model = (DefaultTableModel) someJTable.getModel();
-        // Populate model using ResultSet
+    private void setupLayout() {
+        setLayout(new BorderLayout());
+        add(new JScrollPane(dataTable), BorderLayout.CENTER);
+
+        setTitle("Admin Dashboard");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center on screen
+    }
+
+    private void fetchData() {
+        try {
+            ResultSet rs = dataAccess.fetchData();
+            while (rs.next()) {
+                tableModel.addRow(new Object[]{rs.getString("Column1"), rs.getString("Column2")});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        DataAccess dataAccess = new DataAccessImpl(); // Assume DataAccessImpl is correctly implemented
+        AdminPage frame = new AdminPage(dataAccess);
+        frame.setVisible(true);
     }
 }
