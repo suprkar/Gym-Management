@@ -1,30 +1,57 @@
-import java.swing.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class ChangeAdminId extends JFrame{
+public class ChangeAdminId extends JFrame {
     private JTextField currentIdField;
     private JTextField newIdField;
     private JButton changeButton;
-    private Handler chain;
+    private JLabel statusLabel;
+    private AdminOperations adminOps;
 
-    public ChangeAdminId(AdminOperations adminOps){
-        setupChain(adminOps);
+    public ChangeAdminId(AdminOperations adminOps) {
+        this.adminOps = adminOps;
         initComponents();
+        setupLayout();
     }
-    private void setupChain(AdminOperation adminOps){
-        Handler validationHandler=new ValidationHandler();
-        Handler loggingHandler=new LoggingHandler();
-        Handler executionHandler=new ExecutionHandler(adminOps);
 
-        validationHandler.setSuccessor(loggingHandler);
-        loggingHandler.setSuccessor(executionHandler);
+    private void initComponents() {
+        currentIdField = new JTextField(10);
+        newIdField = new JTextField(10);
+        changeButton = new JButton("Change ID");
+        statusLabel = new JLabel();
 
-        this.chain=validationHandler;
-    }
-     private void initComponents() {
-        // GUI setup code
-        changeButton.addActionListener(e -> {
-            Request request = new Request(currentIdField.getText(), newIdField.getText());
-            chain.handleRequest(request);
+        changeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String currentId = currentIdField.getText();
+                String newId = newIdField.getText();
+                if (adminOps.updateAdminId(currentId, newId)) {
+                    statusLabel.setText("ID updated successfully.");
+                } else {
+                    statusLabel.setText("Failed to update ID.");
+                }
+            }
         });
+    }
+
+    private void setupLayout() {
+        setTitle("Change Admin ID");
+        setLayout(new GridLayout(3, 2, 5, 5));
+        add(new JLabel("Current ID:"));
+        add(currentIdField);
+        add(new JLabel("New ID:"));
+        add(newIdField);
+        add(changeButton);
+        add(statusLabel);
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // Placeholder for AdminOperations implementation
+        AdminOperations adminOps = new AdminOperationsImpl(); // Ensure this class is implemented
+        new ChangeAdminId(adminOps);
     }
 }
