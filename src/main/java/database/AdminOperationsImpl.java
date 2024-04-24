@@ -1,6 +1,7 @@
 import java.sql.*;
 
 public class AdminOperationsImpl implements AdminOperations {
+    private static AdminOperationsImpl instance;
     private Connection connection;
 
     public AdminOperationsImpl() {
@@ -10,6 +11,12 @@ public class AdminOperationsImpl implements AdminOperations {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public static synchronized AdminOperationsImpl getInstance(){
+        if(instance==NULL){
+            instance=new AdminOperationsImpl();
+        }
+        return instance;
     }
 
     @Override
