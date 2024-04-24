@@ -11,7 +11,7 @@ public class DatabaseAccess implements DataAccess {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/demodb";
     private static final String USER = "root";
-    private static final String PASS = "password";
+    private static final String PASS = "pes2ug21cs556";
 
 
      * 

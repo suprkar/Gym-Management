@@ -51,7 +51,7 @@ public class ChangeAdminId extends JFrame {
 
     public static void main(String[] args) {
         
-        AdminOperations adminOps = new AdminOperationsImpl(); // Ensure this class is implemented
+        AdminOperations adminOps = new AdminOperationsImpl(); 
         new ChangeAdminId(adminOps);
     }
 }

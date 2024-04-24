@@ -6,7 +6,7 @@ public class DataAccessImpl implements DataAccess {
     public DataAccessImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demodb", "root", "password");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demodb", "root", "pes2ug21cs556");
         } catch (Exception e) {
             e.printStackTrace();
         }

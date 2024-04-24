@@ -22,7 +22,7 @@ public class ChangeAdminPassword extends JFrame {
         changeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String newPassword = newPasswordField.getText();
-                if (passwordService.changePassword("admin", newPassword)) { // Assume "admin" is the user context
+                if (passwordService.changePassword("admin", newPassword)) { /
                     statusLabel.setText("Password changed successfully.");
                 } else {
                     statusLabel.setText("Failed to change password.");

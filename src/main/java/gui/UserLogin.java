@@ -51,8 +51,8 @@ public class UserLogin extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Placeholder for AuthenticationService implementation
-        AuthenticationService authService = new AuthenticationServiceImpl(); // Ensure this class is implemented
+        
+        AuthenticationService authService = new AuthenticationServiceImpl(); 
         new UserLogin(authService);
     }
 }

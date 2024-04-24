@@ -46,7 +46,7 @@ public class UserSettingServiceImpl implements UserSettingService {
     @Override
     public Settings fetchSettings(String userId) {
         Settings settings = null;
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/database", "username", "password")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/database", "root", "pes2ug21cs556")) {
             String sql = "SELECT * FROM settings WHERE user_id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, userId);

@@ -43,7 +43,7 @@ public class AdminPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        DataAccess dataAccess = new DataAccessImpl(); // Assume DataAccessImpl is correctly implemented
+        DataAccess dataAccess = new DataAccessImpl(); 
         AdminPage frame = new AdminPage(dataAccess);
         frame.setVisible(true);
     }

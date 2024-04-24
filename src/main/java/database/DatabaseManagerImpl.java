@@ -4,7 +4,7 @@ public class DatabaseManagerImpl implements DatabaseManager {
     private Connection connection;
 
     public DatabaseManagerImpl() {
-        this.connection = DriverManager.getConnection("jdbc:yourdriver:db", "user", "password");
+        this.connection = DriverManager.getConnection("jdbc:yourdriver:db", "root", "pes2ug21cs556");
     }
 
     @Override

@@ -22,7 +22,7 @@ public class UserPage extends JFrame {
     }
 
     private void initializeComponents() {
-        // Add GUI components to interact with userDataService and userSettingService
+        
     }
 
     public static void main(String[] args) {
