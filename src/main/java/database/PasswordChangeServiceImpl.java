@@ -4,6 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+public interface PasswordChangeService {
+    boolean changePassword(String loginId, String oldPassword, String newPassword, String confirmPassword);
+}
+
 public class ManagerPasswordChangeService implements PasswordChangeService {
     @Override
     public boolean changePassword(String loginId, String oldPassword, String newPassword, String confirmPassword) {

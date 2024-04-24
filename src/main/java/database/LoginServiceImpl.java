@@ -1,3 +1,14 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+public interface LoginService {
+    boolean login(String username, String password);
+}
+
 public class ManagerLoginService implements LoginService {
     @Override
     public boolean login(String username, String password) {

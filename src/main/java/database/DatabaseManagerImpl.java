@@ -1,5 +1,9 @@
 import java.sql.*;
 
+public interface DatabaseManager {
+    boolean validateLogin(String username, char[] password);
+}
+
 public class DatabaseManagerImpl implements DatabaseManager {
     private Connection connection;
 

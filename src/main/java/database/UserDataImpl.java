@@ -4,6 +4,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+public interface UserDataService {
+    User fetchUserData(String userId);
+    boolean updateUserData(User user);
+}
+
+public interface UserSettingService {
+    Settings fetchSettings(String userId);
+    boolean updateSettings(String userId, Settings settings);
+}
+
 public class UserDataServiceImpl implements UserDataService {
     @Override
     public User fetchUserData(String userId) {

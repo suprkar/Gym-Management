@@ -1,5 +1,8 @@
 import java.sql.*;
 
+public interface IdChangeService {
+    boolean changeLoginId(String currentId, String password, String newId);
+}
 
 public class ManagerIdChangeService implements IdChangeService {
     @Override

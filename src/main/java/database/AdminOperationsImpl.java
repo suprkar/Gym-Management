@@ -1,5 +1,10 @@
 import java.sql.*;
 
+
+public interface AdminOperations {
+    boolean updateAdminId(String currentId, String newId);
+}
+
 public class AdminOperationsImpl implements AdminOperations {
     private static AdminOperationsImpl instance;
     private Connection connection;
