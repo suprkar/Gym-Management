@@ -50,7 +50,7 @@ public class ChangeAdminId extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Placeholder for AdminOperations implementation
+        
         AdminOperations adminOps = new AdminOperationsImpl(); // Ensure this class is implemented
         new ChangeAdminId(adminOps);
     }
